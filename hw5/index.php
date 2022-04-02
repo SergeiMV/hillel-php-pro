@@ -99,7 +99,7 @@ $mixedColor = $color->mix(new RGB(rand(0, 255), rand(0, 255), rand(0, 255)));
 </head>
 <body style="background-color: RGB(<?= $mixedColor->getColors() ?>)">
   <?php if (!$color->equals($mixedColor)): ?>
-    <p>Кольори не равні</p>
+    <p>Кольори не однаковi</p>
   <?php endif; ?>
   <pre>
     <?= var_dump($color).var_dump($mixedColor)?>
