@@ -1,7 +1,6 @@
 <?php
 
 namespace HomeWorkSeven\Classes;
-require_once "Currency.php";
 
 class Money
 {
@@ -9,7 +8,7 @@ class Money
   private $amount;
   private $currency;
 
-  public function __construct( $amount, $currency)
+  public function __construct(int|float $amount, $currency)
   {
     $this->setAmount($amount);
     $this->setCurrency($currency);
@@ -19,12 +18,7 @@ class Money
   
   private function setAmount($amount)
   {
-    if (is_int($amount))
-      $this->amount= $amount;
-    else if (is_float($amount))    
-      $this->amount = round($amount, 2);
-    else
-      throw new Exception('Wrong type');
+    $this->amount = round($amount, 2);
   }
 
   private function setCurrency(Currency $currency)
