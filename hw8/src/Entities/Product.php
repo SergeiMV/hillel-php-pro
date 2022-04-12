@@ -29,12 +29,20 @@ class Product
 
     public function __set($variable, $value)
     {
-        $this->$variable = $this->casts[$variable]::set($value);
+        if (isset($this->casts[$variable])) {
+            $this->$variable = $this->casts[$variable]::set($value);
+        } else {
+            throw new Exception("Wrong set");
+        }
     }
 
     public function __get($variable)
     {
-        return $this->casts[$variable]::get($this->$variable);
+        if (isset($this->casts[$variable])) {
+            return $this->casts[$variable]::get($this->$variable);
+        } else {
+            throw new Exception("Wrong get");
+        }
     }
 
     public function __toString(): string
